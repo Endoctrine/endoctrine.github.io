@@ -4,41 +4,95 @@
     <meta charset="UTF-8">
     <title>Hello</title>
     <style>
-        #main{
-            color: aqua;
-        }
-        #title_box{
-            position: relative;
-            height: 50px;
-        }
-        #title{
-            position: absolute;
-            left: 50%;
-            top: 50%;
+        .main-body{
+            background: beige;
             margin: 0;
-            transform: translate(-50%, -50%);
-            color: black;
-            font-family: 微软雅黑,serif;
-            font-size: 30px;
         }
-        #section_1{
+        .main-header{
+            background: azure;
+            height: 60px;
+            margin: 0;
+            border-bottom: 3px solid black;
+
+            display: flex;
+        }
+        .text-content::selection{
+            background: black;
+            color: white;
+        }
+        .text-content::-moz-selection{
+            background: black;
+            color: white;
+        }
+        .logo{
+            width: 230px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-text{
+            font-family: "Lucida Handwriting",serif;
+            font-weight: bold;
+            font-size: 21px;
             color: black;
-            font-size: 26px;
+            text-decoration: none;
+        }
+        .label-blog{
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .label-text{
             font-family: 仿宋,serif;
-            text-indent: 2em;
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
         }
+
+        .label-playground{
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .main-paragraph{
+
+        }
+        .main-paragraph-text{
+            font-family: 仿宋, serif;
+            font-size: 25px;
+            text-align: center;
+
+        }
+
     </style>
 </head>
-<body id="main">
+<body class="main-body">
 
-<div id="title_box">
-    <h1 id="title">Endoctrine.github.io</h1>
-</div>
-<hr />
-<section id="section_1">
-    <p>
-        勤奋学习能让你走得更远。
+<header class="main-header">
+    <div class="logo">
+        <a href="index.html" target="_self" class="logo-text text-content" >Endoctrine's blog</a>
+    </div>
+    <div class="label-blog">
+        <a href="blog.html" class="label-text text-content">博客</a>
+    </div>
+    <div class="label-playground">
+        <a href="playground.html" class="label-text text-content">游乐场</a>
+    </div>
+</header>
+
+<div class="main-paragraph">
+    <p class="main-paragraph-text">
+        我是一个橡子。
     </p>
-</section>
+</div>
+<script>
+
+</script>
 </body>
 </html>
