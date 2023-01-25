@@ -2,100 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>博客</title>
-    <style>
-        .main-body{
-            background: beige;
-            margin: 0;
-        }
-        .main-header{
-            background: azure;
-            height: 60px;
-            margin: 0;
-            border-bottom: 3px solid black;
+    <title>博客 | Edot的博客</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <script src="node_modules/marked/marked.min.js"></script>
+    <script>
+        window.onload = () => {
+            let httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = doMark;
+            httpRequest.open('GET', 'README.md', true);
+            httpRequest.send(); //我还没有搞明白为什么open之后还要send
+            function doMark() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        document.getElementById('article-body-1').innerHTML =
+                            marked.parse(httpRequest.responseText);
+                    } else {
+                        alert(httpRequest.status);
+                    }
+                } else {
 
-            display: flex;
-        }
-        .text-content::selection{
-            background: black;
-            color: white;
-        }
-        .text-content::-moz-selection{
-            background: black;
-            color: white;
-        }
-        .logo{
-            width: 230px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-text{
-            font-family: "Lucida Handwriting",serif;
-            font-weight: bold;
-            font-size: 21px;
-            color: black;
-            text-decoration: none;
-        }
-        .label-blog{
-            margin-left: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .label-text{
-            font-family: 仿宋,serif;
-            font-size: 25px;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
+                }
+            }
         }
 
-        .label-playground{
-            margin-left: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    </script>
 
-
-        .main-paragraph{
-
-        }
-
-        .main-paragraph-text{
-            font-family: 仿宋, serif;
-            font-size: 25px;
-            text-indent: 2em;
-        }
-
-    </style>
 </head>
 <body class="main-body">
+<!--导航栏-->
+<ul class="navigation-bar">
+    <li class="navigation-button navigation-button-left logo">
+        <a href="index.html">Edot Blog</a>
+    </li>
+    <li class="navigation-button navigation-button-right">
+        <a href="playground.html">游乐场</a>
+    </li>
+    <li class="navigation-button navigation-button-right">
+        <a href="blog.html">博客</a>
+    </li>
+</ul>
+<!--文章-->
+<div class="article">
+    <!--文章标题-->
+    <div class="article-head">
+        <span class="article-title">我的第一篇博客</span>
+    </div>
+    <hr style="color: gray"/>
+    <!--文章正文-->
+    <div class="article-body" id="article-body-1">
 
-<header class="main-header">
-    <div class="logo">
-        <a href="index.html" target="_self" class="logo-text text-content" >Endoctrine's blog</a>
     </div>
-    <div class="label-blog">
-        <a href="blog.html" class="label-text text-content">博客</a>
-    </div>
-    <div class="label-playground">
-        <a href="playground.html" class="label-text text-content">游乐场</a>
-    </div>
-</header>
-
-<div class="main-paragraph">
-    <p class="main-paragraph-text">
-        这是一个博客。
-    </p>
-    <p class="main-paragraph-text">
-        哈哈哈。
-    </p>
 </div>
-<script>
-
-</script>
 </body>
 </html>
