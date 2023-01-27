@@ -7,6 +7,7 @@
     <script src="node_modules/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
     <script>
+
         window.onload = () => {
             let httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = doMark;
@@ -18,7 +19,7 @@
                         document.getElementById('article-body-1').innerHTML =
                             marked.parse(httpRequest.responseText);
                     } else {
-                        alert(httpRequest.status);
+
                     }
                 } else {
 
