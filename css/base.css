@@ -2,6 +2,11 @@
     margin: 0;
 }
 
+.main-body ::selection {
+    color: white;
+    background-color: black;
+}
+
 .navigation-bar {
     margin: 0 50px;
     height: 50px;
@@ -62,4 +67,33 @@
     font-family: "微软雅黑", "宋体", serif;
     font-size: 20px;
     line-height: 1.5;
+}
+
+.article-list-item {
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+    display: flex;
+    align-items: center;
+
+    animation: list-item-display 200ms;
+}
+
+@keyframes list-item-display {
+    0%{opacity: 0;}
+    100%{opacity: 100%;}
+}
+
+.article-list-item:hover {
+    background: #F0F0F0;
+    transition: 200ms;
+ }
+
+.article-list-title {
+    font-family: "微软雅黑", "黑体", serif;
+    font-size: 30px;
+    font-weight: bold;
+
+    margin-left: 10px;
 }

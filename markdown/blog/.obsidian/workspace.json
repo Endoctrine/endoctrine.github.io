@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "d618499640648015",
+        "id": "61b41a7e85e50ab8",
         "type": "tabs",
         "children": [
           {
-            "id": "a7410bef74e58d9a",
+            "id": "86879a32bf90b10b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-1-24.md",
+                "file": "2023-1-27.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "30a1ecc5290579a0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-1-28.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-1-24.md",
+                "file": "2023-1-28.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-1-24.md",
+                "file": "2023-1-28.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,17 +139,22 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-1-24.md"
+                "file": "2023-1-28.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "a7410bef74e58d9a",
-  "lastOpenFiles": []
+  "active": "f69938add5d7474d",
+  "lastOpenFiles": [
+    "2023-1-27.md",
+    "2023-1-28.md",
+    "2023-1-24.md"
+  ]
 }
