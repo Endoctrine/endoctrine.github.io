@@ -3,21 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>博客 | Edot的博客</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
     <script src="node_modules/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
     <script>
 
         window.onload = () => {
             let httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = doMark;
-            httpRequest.open('GET', 'README.md', true);
-            httpRequest.send(); //我还没有搞明白为什么open之后还要send
-            function doMark() {
+            httpRequest.responseType = "json";
+            httpRequest.onreadystatechange = parseList;
+            httpRequest.open('GET', 'https://api.github.com/repos/endoctrine/' +
+                'endoctrine.github.io/contents/markdown/blog', true);
+            httpRequest.send();
+
+            function parseList() {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    if (httpRequest.status === 200) {
-                        document.getElementById('article-body-1').innerHTML =
-                            marked.parse(httpRequest.responseText);
+                    if(httpRequest.status === 200) {
+                        let responseObject = httpRequest.response;
+                        /**
+                         * @param responseObject[].name
+                         * @param responseObject[].path
+                         * */
+                        let counter = 0;
+                        for (let fileInfo of responseObject) {
+                            let filenameRegex = new RegExp('.+\.md');
+                            if (fileInfo.name.match(filenameRegex)) {
+                                let article_body = document.getElementById('article-body-1');
+                                article_body.innerHTML += '<button id="' + 'list-item-button-'
+                                    + counter + '"' + ' style="display: none" '
+                                    + 'onclick="doMark(\'' + fileInfo.name.split('\.md')[0] + '\', \'' + fileInfo.path + '\')"' + '></button>';
+                                article_body.innerHTML +=
+                                    '<div class="article-list-item"><label for="list-item-button-'
+                                    + counter + '"><span class="article-list-title">'
+                                    + fileInfo.name.split('\.md')[0] + '</span></label></div>';
+
+                            }
+                            counter++;
+                        }
                     } else {
 
                     }
@@ -25,6 +47,8 @@
 
                 }
             }
+
+
         }
 
     </script>
@@ -47,7 +71,7 @@
 <div class="article">
     <!--文章标题-->
     <div class="article-head">
-        <span class="article-title">我的第一篇博客</span>
+        <span class="article-title" id="article-title-1">目录</span>
     </div>
     <hr style="color: gray"/>
     <!--文章正文-->
@@ -55,5 +79,30 @@
 
     </div>
 </div>
+<!--页脚-->
+<footer class="page-footer" id="page-footer-1">
+
+</footer>
+<script>
+    function doMark(blogName, blogPath) {
+        document.getElementById('article-title-1').innerHTML = blogName;
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = () => {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    document.getElementById('article-body-1').innerHTML
+                        = marked.parse(httpRequest.responseText);
+                } else {
+
+                }
+            } else {
+
+            }
+        }
+
+        httpRequest.open('GET', blogPath, true);
+        httpRequest.send();
+    }
+</script>
 </body>
 </html>
