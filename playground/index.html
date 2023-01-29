@@ -4,6 +4,68 @@
     <meta charset="UTF-8">
     <title>游乐场 | Edot的博客</title>
     <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <script>
+
+        window.onload = () => {
+            let waiting = 0;
+
+            let httpRequest = new XMLHttpRequest();
+            httpRequest.responseType = "json";
+            httpRequest.onreadystatechange = parseList;
+            httpRequest.open('GET', 'https://api.github.com/repos/endoctrine/' +
+                'endoctrine.github.io/contents/playground', true);
+            httpRequest.send();
+
+            function parseList() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    waiting = 0;
+                    stopShowWaiting();
+                    if(httpRequest.status === 200) {
+                        let responseObject = httpRequest.response;
+                        /**
+                         * @param responseObject[].name
+                         * @param responseObject[].path
+                         * */
+                        let counter = 0;
+                        responseObject.reverse();
+                        for (let fileInfo of responseObject) {
+                            let filenameRegex = new RegExp('.+\.html');
+                            if (fileInfo.name.match(filenameRegex) && fileInfo.name !== 'index.html') {
+                                let article_body = document.getElementById('article-body-1');
+                                article_body.innerHTML += '<button id="' + 'list-item-button-'
+                                    + counter + '"' + ' style="display: none" '
+                                    + 'onclick="location.href=\''+ fileInfo.path +'\'"' + '></button>';
+                                article_body.innerHTML +=
+                                    '<label for="list-item-button-'
+                                    + counter + '"><div class="article-list-item"><span class="article-list-title">'
+                                    + fileInfo.name.split('\.html')[0] + '</span></div></label>';
+
+                            }
+                            counter++;
+                        }
+                    } else {
+                        alert(httpRequest.status);
+                    }
+                } else {
+                    if (waiting === 0) {
+                        waiting = 1;
+                        showWaiting();
+                    }
+                }
+            }
+
+        }
+
+    </script>
+    <script>
+        function showWaiting() {
+            document.getElementById('article-body-1').innerHTML = 'Waiting...';
+        }
+
+        function stopShowWaiting() {
+            document.getElementById('article-body-1').innerHTML = '';
+        }
+    </script>
 
 </head>
 <body class="main-body">
@@ -21,7 +83,19 @@
 </ul>
 <!--文章-->
 <div class="article">
+    <!--文章标题-->
+    <div class="article-head">
+        <span class="article-title" id="article-title-1">游乐项目</span>
+    </div>
+    <hr style="color: gray"/>
+    <!--文章正文-->
+    <div class="article-body" id="article-body-1">
 
+    </div>
 </div>
+<!--页脚-->
+<footer class="page-footer" id="page-footer-1">
+
+</footer>
 </body>
 </html>

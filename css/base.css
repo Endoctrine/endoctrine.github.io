@@ -66,6 +66,11 @@
     font-weight: bold;
 }
 
+.article-body {
+    font-family: "微软雅黑", "宋体", serif;
+    font-size: 20px;
+}
+
 .article-body > p {
     font-family: "微软雅黑", "宋体", serif;
     font-size: 20px;
