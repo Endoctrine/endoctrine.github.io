@@ -59,25 +59,34 @@
 }
 
 .article-title {
+    margin-left: 10px;
+
     font-family: "微软雅黑", "黑体", serif;
     font-size: 40px;
     font-weight: bold;
 }
+
 .article-body > p {
     font-family: "微软雅黑", "宋体", serif;
     font-size: 20px;
     line-height: 1.5;
 }
 
+.article-body a {
+    text-decoration: none;
+    color: gray;
+    word-break: break-all; /*指定了怎样在单词内断行，说白了就是可以让超链接换行了*/
+}
+
 .article-list-item {
-    height: 100px;
+    height: 50px;
     margin-bottom: 10px;
     border-radius: 3px;
 
     display: flex;
     align-items: center;
 
-    animation: list-item-display 200ms;
+    animation: list-item-display 500ms;
 }
 
 @keyframes list-item-display {

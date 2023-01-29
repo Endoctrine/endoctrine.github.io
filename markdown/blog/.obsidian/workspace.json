@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "61b41a7e85e50ab8",
+        "id": "e2bd225ffe5003a3",
         "type": "tabs",
         "children": [
           {
-            "id": "86879a32bf90b10b",
+            "id": "d34c1a5bf833401e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-1-27.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "30a1ecc5290579a0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-1-28.md",
+                "file": "2023-1-29.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-1-28.md",
+                "file": "2023-1-29.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-1-28.md",
+                "file": "2023-1-29.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-1-28.md"
+                "file": "2023-1-29.md"
               }
             }
           }
@@ -151,7 +138,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f69938add5d7474d",
+  "active": "d34c1a5bf833401e",
   "lastOpenFiles": [
     "2023-1-27.md",
     "2023-1-28.md",
