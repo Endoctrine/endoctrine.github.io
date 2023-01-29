@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "marked": "^4.2.12"
+    "marked": "^4.2.12",
+    "mathjax": "^3.2.2"
   }
 }

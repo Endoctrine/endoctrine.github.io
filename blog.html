@@ -5,7 +5,14 @@
     <title>博客 | Edot的博客</title>
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
     <script src="node_modules/marked/marked.min.js"></script>
+    <script src="node_modules/mathjax/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJex = {
+            tex: {inlineMath : [['$', '$']]}
+        };
+    </script>
     <script>
 
         window.onload = () => {
@@ -29,6 +36,7 @@
                          * @param responseObject[].path
                          * */
                         let counter = 0;
+                        responseObject.reverse();
                         for (let fileInfo of responseObject) {
                             let filenameRegex = new RegExp('.+\.md');
                             if (fileInfo.name.match(filenameRegex)) {
@@ -110,8 +118,10 @@
                 if (httpRequest.status === 200) {
                     document.getElementById('article-body-1').innerHTML
                         = marked.parse(httpRequest.responseText);
+                    MathJax.typeset();
                     document.getElementById('article-body-1').style.paddingLeft = '10px';
                     document.getElementById('article-body-1').style.paddingRight = '10px';
+
                 } else {
                     alert(httpRequest.status);
                 }
