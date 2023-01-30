@@ -50,7 +50,16 @@
             display: inline-block;
             vertical-align: sub;
 
-            background: gray;
+        }
+
+        @keyframes result-color-display {
+            0%{opacity: 0;}
+            100%{opacity: 100%;}
+        }
+
+        @keyframes result-color-display-copy {
+            0%{opacity: 0;}
+            100%{opacity: 100%;}
         }
 
 
@@ -79,7 +88,7 @@
     <!--文章正文-->
     <div class="article-body" id="article-body-1" style="padding-left: 10px; padding-right: 10px">
         <label for="oc-name-input-1"><span class="introduction">请输入OC的名字：</span></label>
-        <br/>
+        <br />
         <input type="text" class="oc-name-input" id="oc-name-input-1"/>
         <label for="submit-button-1"><span class="submit-button">提交</span></label>
         <button id="submit-button-1" onclick="showColor()" style="display: none"></button>
@@ -92,6 +101,16 @@
     </div>
 </div>
 <script>
+    let animation_state = 0;
+
+    document.getElementById('oc-name-input-1').addEventListener("keypress",
+        function (event) {
+            if (event.key === 'Enter') {
+                showColor();
+            }
+        }
+    )
+
     function showColor() {
         let input_name = document.getElementById('oc-name-input-1').value;
         let result_text = document.getElementById('result-text-1');
@@ -107,6 +126,19 @@
         while (color_3 === color_1 || color_3 === color_2) {
             color_3 = (color_2 + 0xFFFFn) % 0x1000000n;
         }
+
+        if (animation_state === 0) {
+            animation_state = 1;
+            document.getElementById('result-color-1').style.animation = 'result-color-display-copy 1s';
+            document.getElementById('result-color-2').style.animation = 'result-color-display-copy 1s';
+            document.getElementById('result-color-3').style.animation = 'result-color-display-copy 1s';
+        } else {
+            animation_state = 0;
+            document.getElementById('result-color-1').style.animation = 'result-color-display 1s';
+            document.getElementById('result-color-2').style.animation = 'result-color-display 1s';
+            document.getElementById('result-color-3').style.animation = 'result-color-display 1s';
+        }
+
 
         document.getElementById('result-color-1').style.backgroundColor = '#' + color_1.toString(16).padStart(6, '0');
         document.getElementById('result-color-2').style.backgroundColor = '#' + color_2.toString(16).padStart(6, '0');
