@@ -2,11 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>游乐场 | GET你的专属OC配色吧！</title>
-    <link rel="stylesheet" type="text/css" href="../css/base.css" />
-    <script>
+    <title>游乐场 | GET你OC的印象色吧！</title>
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:1024px)" href="../css/base.css"/>
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:1023px)" href="../css/mobile-base.css"/>
 
-    </script>
+    <style>
+        .submit-button {
+            padding: 0 10px;
+            border: black 1px solid;
+            border-radius: 2px;
+
+            background: #F0F0F0;
+        }
+
+        .submit-button:hover {
+            background: #CCCCCC;
+            transition: 200ms;
+        }
+
+        .oc-name-input {
+            border: none;
+            outline: none;
+            border-bottom: gray 2px solid;
+
+            font-size: 100%;
+        }
+
+        .oc-name-input:focus {
+            border-bottom: gray 2px solid;
+
+            animation: underline 500ms;
+        }
+
+        @keyframes underline {
+            0% {
+                border-bottom: gray 2px solid;
+            }
+            100% {
+                border-bottom: black 2px solid;
+            }
+        }
+
+        .result-color {
+            width: 30px;
+            height: 30px;
+
+            display: inline-block;
+            vertical-align: sub;
+
+            background: gray;
+        }
+
+
+    </style>
 </head>
 <body class="main-body">
 <!--导航栏-->
@@ -17,13 +65,67 @@
     <li class="navigation-button navigation-button-right">
         <a href="index.html">游乐场</a>
     </li>
-    <li class="navigation-button navigation-button-right">
+    <li class="navigation-button navigation-button-right pc">
         <a href="../blog.html">博客</a>
     </li>
 </ul>
 <!--文章-->
 <div class="article">
-
+    <!--文章标题-->
+    <div class="article-head">
+        <span class="article-title" id="article-title-1">测测你OC的印象色</span>
+    </div>
+    <hr style="color: gray"/>
+    <!--文章正文-->
+    <div class="article-body" id="article-body-1" style="padding-left: 10px; padding-right: 10px">
+        <label for="oc-name-input-1"><span class="introduction">请输入OC的名字：</span></label>
+        <br/>
+        <input type="text" class="oc-name-input" id="oc-name-input-1"/>
+        <label for="submit-button-1"><span class="submit-button">提交</span></label>
+        <button id="submit-button-1" onclick="showColor()" style="display: none"></button>
+        <div id="result-space-1" style="margin: 10px 0; padding: 0">
+            <span id="result-text-1"></span>
+            <span class="result-color" id="result-color-1"></span>
+            <span class="result-color" id="result-color-2"></span>
+            <span class="result-color" id="result-color-3"></span>
+        </div>
+    </div>
 </div>
+<script>
+    function showColor() {
+        let input_name = document.getElementById('oc-name-input-1').value;
+        let result_text = document.getElementById('result-text-1');
+        result_text.innerHTML = input_name;
+        result_text.innerHTML += '的专属配色是：';
+
+        let color_1 = encodeURI(input_name).hashCode() % 0x1000000n;
+        let color_2 = (encodeURI(input_name).hashCode() >> 24n) % 0x1000000n;
+        while (color_2 === color_1) {
+            color_2 = (color_2 + 0xFFFFn) % 0x1000000n;
+        }
+        let color_3 = (encodeURI(input_name).hashCode() >> 48n) % 0x1000000n;
+        while (color_3 === color_1 || color_3 === color_2) {
+            color_3 = (color_2 + 0xFFFFn) % 0x1000000n;
+        }
+
+        document.getElementById('result-color-1').style.backgroundColor = '#' + color_1.toString(16).padStart(6, '0');
+        document.getElementById('result-color-2').style.backgroundColor = '#' + color_2.toString(16).padStart(6, '0');
+        document.getElementById('result-color-3').style.backgroundColor = '#' + color_3.toString(16).padStart(6, '0');
+
+        document.getElementById('result-color-1').style.border = 'black 2px solid';
+        document.getElementById('result-color-2').style.border = 'black 2px solid';
+        document.getElementById('result-color-3').style.border = 'black 2px solid';
+    }
+
+    String.prototype.hashCode = function () {
+        let string_with_salt = this + 'C0LO24SaLT900dGoOd4Dad1';
+        let hash = 0n;
+        for (let i = 0; i < string_with_salt.length; i++) {
+            hash = (hash * 131n + BigInt(string_with_salt.charCodeAt(i))) % 0x1000000000000000000n;
+        }
+        return hash;
+    }
+
+</script>
 </body>
 </html>

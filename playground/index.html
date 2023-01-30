@@ -5,6 +5,10 @@
     <title>游乐场 | Edot的博客</title>
     <link rel="stylesheet" type="text/css" href="../css/base.css" />
     <script>
+        let game_map = new Map();
+        game_map.set('oc-color', '测测你OC的印象色吧！');
+    </script>
+    <script>
 
         window.onload = () => {
             let waiting = 0;
@@ -38,8 +42,7 @@
                                 article_body.innerHTML +=
                                     '<label for="list-item-button-'
                                     + counter + '"><div class="article-list-item"><span class="article-list-title">'
-                                    + fileInfo.name.split('\.html')[0] + '</span></div></label>';
-
+                                    + game_map.get(fileInfo.name.split('\.html')[0]) + '</span></div></label>';
                             }
                             counter++;
                         }

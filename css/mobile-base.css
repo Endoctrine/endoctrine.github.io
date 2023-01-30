@@ -1,0 +1,62 @@
+.pc {
+    display: none !important;
+}
+
+.main-body {
+    margin: 0;
+}
+
+.main-body ::selection {
+    color: white;
+    background-color: black;
+}
+
+.navigation-bar {
+    margin: 0;
+    padding: 0;
+    height: 40px;
+
+    border-bottom: gray 2px solid;
+
+}
+
+.navigation-button {
+    height: 40px;
+    margin: 0 20px;
+
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-button > a {
+    text-decoration: none;
+
+    font-size: 23px;
+    font-family: sans-serif, serif;
+    font-weight: bold;
+    color: black;
+
+}
+
+.navigation-button-left {
+    float: left;
+}
+
+.navigation-button-right {
+    float: right;
+}
+
+.article {
+    margin: 10px 50px;
+}
+
+.article-title {
+    margin-left: 10px;
+
+    font-family: sans-serif, serif;
+    font-weight: bold;
+    font-size: 20px;
+}
