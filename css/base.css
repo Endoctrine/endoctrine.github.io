@@ -88,6 +88,14 @@
     word-break: break-all; /*指定了怎样在单词内断行，说白了就是可以让超链接换行了*/
 }
 
+.article-body mjx-container {
+    overflow: auto;
+}
+
+.article-body pre {
+    overflow: auto;
+}
+
 .article-list-item {
     height: 50px;
     margin-bottom: 10px;

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    MathJax = {
+        tex: {inlineMath: [['$', '$']]}
+    };
+</script>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>博客 | Edot的博客</title>
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
     <script>
-        MathJex = {
-            tex: {inlineMath : [['$', '$']]}
-        };
-    </script>
-    <script>
-
         window.onload = () => {
             let waiting = 0;
 
@@ -27,7 +26,7 @@
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     waiting = 0;
                     stopShowWaiting();
-                    if(httpRequest.status === 200) {
+                    if (httpRequest.status === 200) {
                         let responseObject = httpRequest.response;
                         /**
                          * @param responseObject[].name
@@ -105,6 +104,7 @@
 
 </footer>
 <script>
+
     function doMark(blogName, blogPath) {
         let waiting = 0;
         document.getElementById('article-title-1').innerHTML = blogName;
