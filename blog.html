@@ -2,7 +2,8 @@
 <html lang="en">
 <script>
     MathJax = {
-        tex: {inlineMath: [['$', '$']]}
+        loader: {load: ['[tex]/textmacros', '[tex]/textcomp']},
+        tex: {inlineMath: [['$', '$']], packages: {'[+]': ['textcomp']}}
     };
 </script>
 <head>
@@ -10,9 +11,15 @@
     <title>博客 | Edot的博客</title>
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
         window.onload = () => {
+            if (window.location.hash !== "") {
+                let blogName = window.location.hash.replaceAll("#", "");
+                doMark(blogName, "markdown/blog/" + blogName + ".md");
+                return;
+            }
+
             let waiting = 0;
 
             let httpRequest = new XMLHttpRequest();
@@ -119,7 +126,7 @@
                     MathJax.typeset();
                     document.getElementById('article-body-1').style.paddingLeft = '10px';
                     document.getElementById('article-body-1').style.paddingRight = '10px';
-
+                    // window.location.hash = "#" + blogName;
                 } else {
                     alert(httpRequest.status);
                 }
