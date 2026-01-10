@@ -4,7 +4,7 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
       <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
         <router-link
-          to="/about"
+          to="/"
           class="flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -12,9 +12,9 @@
           </svg>
           返回
         </router-link>
-        
+
         <h1 class="text-lg font-light tracking-wide">截码战</h1>
-        
+
         <button
           @click="showRules = true"
           class="text-sm opacity-60 hover:opacity-100 transition-opacity"
@@ -27,7 +27,7 @@
     <!-- 主要内容区 -->
     <main class="pt-20 pb-8 px-4">
       <div class="max-w-2xl mx-auto">
-        
+
         <!-- 当前状态提示 -->
         <div class="text-center mb-6">
           <span class="inline-block px-4 py-1 rounded-full text-sm bg-gray-100 dark:bg-gray-900">
@@ -48,8 +48,8 @@
               @click="selectTeam('A')"
               :disabled="isSelecting"
               class="px-8 py-4 rounded-lg border-2 transition-all duration-300 disabled:opacity-50"
-              :class="selectedTeam === 'A' 
-                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' 
+              :class="selectedTeam === 'A'
+                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                 : 'border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white'"
             >
               <div class="text-2xl mb-1">🔵</div>
@@ -59,8 +59,8 @@
               @click="selectTeam('B')"
               :disabled="isSelecting"
               class="px-8 py-4 rounded-lg border-2 transition-all duration-300 disabled:opacity-50"
-              :class="selectedTeam === 'B' 
-                ? 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400' 
+              :class="selectedTeam === 'B'
+                ? 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
                 : 'border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white'"
             >
               <div class="text-2xl mb-1">🔴</div>
@@ -103,7 +103,7 @@
                 {{ word }}
               </div>
             </div>
-            
+
             <div class="flex justify-center gap-4 mt-6">
               <button
                 @click="confirmWords"
@@ -161,7 +161,7 @@
               </svg>
               <span>密码已生成并隐藏，请加密人记录保密</span>
             </div>
-            
+
             <button
               @click="proceedToDescription"
               class="px-8 py-3 rounded-lg bg-black dark:bg-white text-white dark:text-black font-medium hover:opacity-80 transition-all duration-300"
@@ -192,8 +192,8 @@
               v-for="(num, index) in password"
               :key="index"
               class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300"
-              :class="index <= currentDescriptionIndex 
-                ? 'bg-black dark:bg-white text-white dark:text-black' 
+              :class="index <= currentDescriptionIndex
+                ? 'bg-black dark:bg-white text-white dark:text-black'
                 : 'bg-black/20 dark:bg-white/20'"
             >
               {{ num }}
@@ -271,8 +271,8 @@
           <div v-if="isEncryptor" class="text-center mb-8">
             <div class="text-sm opacity-60 mb-3">真实密码</div>
             <div class="inline-flex items-center gap-3 px-6 py-4 rounded-lg bg-black dark:bg-white text-white dark:text-black">
-              <span 
-                v-for="(num, index) in password" 
+              <span
+                v-for="(num, index) in password"
                 :key="index"
                 class="text-2xl font-bold"
               >
@@ -315,14 +315,14 @@
 
           <!-- 得分详情 -->
           <div class="space-y-4 mb-8">
-            <div 
+            <div
               class="flex items-center justify-between p-4 rounded-lg"
               :class="selectedTeam === 'A' ? 'bg-blue-50 dark:bg-blue-900/20' : 'bg-red-50 dark:bg-red-900/20'"
             >
               <span class="opacity-60">{{ selectedTeam }}队得分</span>
               <span class="text-xl font-bold">+{{ roundScore }}</span>
             </div>
-            <div 
+            <div
               class="flex items-center justify-between p-4 rounded-lg"
               :class="selectedTeam === 'A' ? 'bg-red-50 dark:bg-red-900/20' : 'bg-blue-50 dark:bg-blue-900/20'"
             >
@@ -365,7 +365,7 @@
             <span>游戏规则</span>
             <span>{{ showRules ? '收起' : '展开' }}</span>
           </button>
-          
+
           <div v-if="showRules" class="mt-4 p-4 bg-gray-100 dark:bg-gray-900 rounded-lg text-sm space-y-3">
             <div>
               <h4 class="font-medium mb-1">游戏进程一</h4>
@@ -464,7 +464,7 @@ const getPhaseText = () => {
 const selectTeam = async (team) => {
   isSelecting.value = true;
   selectedTeam.value = team;
-  
+
   // 重置状态
   words.value = [];
   password.value = [];
@@ -474,7 +474,7 @@ const selectTeam = async (team) => {
   guessInput.value = '';
   roundScore.value = 0;
   opponentRoundScore.value = 0;
-  
+
   await new Promise(resolve => setTimeout(resolve, 300));
   isSelecting.value = false;
 };
@@ -527,10 +527,10 @@ const submitGuess = () => {
     alert('请输入3个1-4之间的数字，用空格分隔');
     return;
   }
-  
+
   const parts = guessInput.value.trim().split(/\s+/).map(p => parseInt(p));
   ownGuess.value = parts;
-  
+
   // 进入公布阶段
   phase.value = 'reveal';
 };
@@ -538,35 +538,35 @@ const submitGuess = () => {
 // 计算得分
 const calculateResult = () => {
   const isOwnGuessCorrect = JSON.stringify(ownGuess.value) === JSON.stringify(password.value);
-  const isOpponentCorrect = opponentGuess.value && 
+  const isOpponentCorrect = opponentGuess.value &&
     JSON.stringify(opponentGuess.value) === JSON.stringify(password.value);
-  
+
   // 本队得分（作为截码队）
   if (isOwnGuessCorrect) {
     roundScore.value += 1;
   }
-  
+
   // 对手得分（作为加密队）
   if (isOpponentCorrect) {
     opponentRoundScore.value += 1;
   }
-  
+
   // 加密队猜错给截码队加分
   // 这里简化：假设对方也猜错了
   if (!isOpponentCorrect) {
     roundScore.value += 1;
   }
-  
+
   // 截码队猜错给加密队加分
   if (!isOwnGuessCorrect) {
     opponentRoundScore.value += 1;
   }
-  
+
   // 更新总分
   scores.value[selectedTeam.value] += roundScore.value;
   const opponent = selectedTeam.value === 'A' ? 'B' : 'A';
   scores.value[opponent] += opponentRoundScore.value;
-  
+
   phase.value = 'result';
 };
 
@@ -580,7 +580,7 @@ const startNewRound = () => {
   guessInput.value = '';
   roundScore.value = 0;
   opponentRoundScore.value = 0;
-  
+
   phase.value = 'encryption';
 };
 
@@ -627,11 +627,11 @@ button:active {
   .grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .text-3xl {
     font-size: 2rem;
   }
-  
+
   .text-2xl {
     font-size: 1.5rem;
   }
