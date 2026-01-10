@@ -140,17 +140,38 @@
             <div class="text-6xl mb-4">🎲</div>
             <p>一个桌游工具，正在构思中...</p>
             <p class="text-sm mt-2">敬请期待</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 模态框 - 截码战页面 -->
+        <div
+          v-if="showModal && currentModal === 'codewar'"
+          class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in z-50 overflow-y-auto"
+          @click.self="closeModal"
+        >
+          <div class="w-full max-w-4xl border-2 border-black dark:border-white rounded-lg relative animate-scale-in my-8">
+            <button
+              @click="closeModal"
+              class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full border-2 border-black dark:border-white flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 bg-white dark:bg-black"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+
+            <CodenamesPage @back="closeModal" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-</template>
+  </template>
 
-<script setup>
-import { ref } from 'vue';
+  <script setup>
+  import { ref } from 'vue';
+  import CodenamesPage from './pages/Codenames/Codenames.vue';
 
-// 页面状态
+  // 页面状态
 const currentPage = ref('home');
 const showModal = ref(false);
 const currentModal = ref('');
