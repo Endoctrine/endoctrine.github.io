@@ -146,6 +146,7 @@
               :key="index"
               class="p-3 rounded-lg bg-gray-100 dark:bg-gray-900 text-center text-sm"
             >
+              <span class="opacity-60">第{{ index + 1 }}回合:</span>
               {{ entry.password.join(' → ') }}
             </div>
           </div>
