@@ -1,41 +1,41 @@
-import { defineConfig } from '@rsbuild/core';
-import { pluginVue } from '@rsbuild/plugin-vue';
+import { defineConfig } from "@rsbuild/core";
+import { pluginVue } from "@rsbuild/plugin-vue";
 
 export default defineConfig({
-  plugins: [
-    pluginVue(),
-  ],
+  plugins: [pluginVue()],
   source: {
     entry: {
-      index: './src/main.js'
+      index: "./src/main.js",
     },
+  },
+  resolve: {
     alias: {
-      '@': './src'
-    }
+      "@": "./src",
+    },
   },
   html: {
-    template: './public/index.html',
-    title: 'Endoctrine - Personal Site',
+    template: "./public/index.html",
+    title: "Endoctrine - Personal Site",
     meta: {
-      description: 'Personal GitHub Pages site built with Vue and Rsbuild',
-      viewport: 'width=device-width, initial-scale=1.0'
-    }
+      description: "Personal GitHub Pages site built with Vue and Rsbuild",
+      viewport: "width=device-width, initial-scale=1.0",
+    },
   },
   output: {
-    target: 'web',
+    target: "web",
     cleanDistPath: true,
     distPath: {
-      root: 'dist'
-    }
+      root: "dist",
+    },
   },
   dev: {
     port: 3000,
     hot: true,
-    overlay: true
+    overlay: true,
   },
   performance: {
     chunkSplit: {
-      strategy: 'split-by-experience'
-    }
-  }
+      strategy: "split-by-experience",
+    },
+  },
 });

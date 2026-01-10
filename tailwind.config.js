@@ -5,18 +5,11 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx,vue}",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#3b82f6',
-        secondary: '#8b5cf6',
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-      },
-    },
+    extend: {},
   },
   plugins: [],
   corePlugins: {
     preflight: true,
   },
+  darkMode: 'class',
 };
