@@ -8,15 +8,15 @@
       </h1>
 
       <!-- 跳转按钮 -->
-      <button 
+      <button
         @click="goToList"
         class="w-16 h-16 rounded-full border-2 border-black dark:border-white flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 group animate-fade-in-up cursor-pointer"
         aria-label="进入列表"
       >
-        <svg 
-          class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-1" 
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -27,7 +27,7 @@
     <!-- 列表页面 -->
     <div v-else class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
       <!-- 返回按钮 -->
-      <button 
+      <button
         @click="goHome"
         class="absolute top-8 left-8 w-10 h-10 rounded-full border-2 border-black dark:border-white flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 cursor-pointer"
         aria-label="返回主页"
@@ -38,15 +38,15 @@
       </button>
 
       <!-- 列表容器 -->
-      <div class="w-full max-w-2xl space-y-6 animate-fade-in-up">
-        <h2 class="text-2xl font-light mb-8 text-center">选择页面</h2>
+      <div class="w-full max-w-2xl space-y-4 animate-fade-in-up">
+        <h2 class="text-2xl font-light mb-8 text-center">下一步</h2>
 
         <!-- 列表项 - 关于 -->
-        <div 
-          class="group border-2 border-black dark:border-white p-6 rounded-lg cursor-pointer hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
+        <div
+          class="group border-b border-black/20 dark:border-white/20 pb-4 cursor-pointer transition-all duration-300"
           @click="openPage('about')"
         >
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between group-hover:font-bold transition-all duration-300">
             <span class="text-xl font-light">关于</span>
             <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -55,11 +55,11 @@
         </div>
 
         <!-- 列表项 - 截码战 -->
-        <div 
-          class="group border-2 border-black dark:border-white p-6 rounded-lg cursor-pointer hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 relative overflow-hidden"
+        <div
+          class="group border-b border-black/20 dark:border-white/20 pb-4 cursor-pointer transition-all duration-300 relative overflow-hidden"
           @click="openPage('codewar')"
         >
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between group-hover:font-bold transition-all duration-300">
             <span class="text-xl font-light">截码战</span>
             <span class="text-sm opacity-60 ml-4">即将推出</span>
           </div>
@@ -67,14 +67,14 @@
       </div>
 
       <!-- 模态框 - 关于页面 -->
-      <div 
-        v-if="showModal && currentModal === 'about'" 
+      <div
+        v-if="showModal && currentModal === 'about'"
         class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in z-50"
         @click.self="closeModal"
       >
         <div class="max-w-2xl w-full border-2 border-black dark:border-white rounded-lg p-8 relative animate-scale-in">
-          <button 
-            @click="closeModal" 
+          <button
+            @click="closeModal"
             class="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-black dark:border-white flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,12 +83,12 @@
           </button>
 
           <h3 class="text-2xl font-light mb-6">关于</h3>
-          
+
           <div class="space-y-6">
             <!-- GitHub 头像 -->
             <div class="flex items-center gap-4">
-              <img 
-                src="https://github.com/endoctrine.png" 
+              <img
+                src="https://github.com/endoctrine.png"
                 alt="GitHub Avatar"
                 class="w-16 h-16 rounded-full border-2 border-black dark:border-white grayscale hover:grayscale-0 transition-all duration-300"
                 @error="$event.target.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2264%22 height=%2264%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%23000%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22%3E%E2%98%85%3C/text%3E%3C/svg%3E'"
@@ -100,8 +100,8 @@
             </div>
 
             <!-- GitHub 链接 -->
-            <a 
-              href="https://github.com/endoctrine" 
+            <a
+              href="https://github.com/endoctrine"
               target="_blank"
               class="inline-flex items-center gap-2 border-2 border-black dark:border-white px-4 py-2 rounded hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
             >
@@ -113,21 +113,21 @@
 
             <!-- 简介 -->
             <div class="opacity-80 text-sm leading-relaxed mt-4">
-              一个正在探索技术边界的开发者，热衷于创造有意思的工具和项目。
+                Ciallo～(∠·ω< )⌒★
             </div>
           </div>
         </div>
       </div>
 
       <!-- 模态框 - 截码战页面（占位） -->
-      <div 
-        v-if="showModal && currentModal === 'codewar'" 
+      <div
+        v-if="showModal && currentModal === 'codewar'"
         class="fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in z-50"
         @click.self="closeModal"
       >
         <div class="max-w-2xl w-full border-2 border-black dark:border-white rounded-lg p-8 relative animate-scale-in">
-          <button 
-            @click="closeModal" 
+          <button
+            @click="closeModal"
             class="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-black dark:border-white flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
