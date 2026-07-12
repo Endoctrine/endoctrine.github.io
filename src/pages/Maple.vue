@@ -3,11 +3,12 @@
     <canvas id="maple-canvas" class="block h-full w-full outline-none" />
 
     <button
+      v-if="started"
       type="button"
-      class="absolute right-4 top-4 z-20 flex h-10 items-center gap-2 rounded-full border border-white/40 bg-black/70 px-4 text-sm text-white/90 backdrop-blur transition hover:bg-white hover:text-black"
-      @click="router.push('/')"
+      class="absolute right-4 top-4 z-20 rounded-full border border-white/40 bg-black/70 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white hover:text-black"
+      @click="exitDemo"
     >
-      ← 退出主页
+      ← 返回主页
     </button>
 
     <div
@@ -58,6 +59,11 @@ const router = useRouter();
 const started = ref(false);
 const loading = ref(false);
 const error = ref('');
+
+const exitDemo = () => {
+  // Full page navigation tears down the entire WASM runtime and audio stream.
+  window.location.href = '/';
+};
 
 const startDemo = async () => {
   if (loading.value || started.value) return;

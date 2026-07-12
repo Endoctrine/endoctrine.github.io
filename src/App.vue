@@ -9,7 +9,18 @@
 </template>
 
 <script setup>
-// 根组件 - 只负责渲染路由视图
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+onMounted(() => {
+  const stored = sessionStorage.getItem('redirect');
+  if (stored) {
+    sessionStorage.removeItem('redirect');
+    router.replace(stored);
+  }
+});
 </script>
 
 <style>
