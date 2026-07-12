@@ -1,6 +1,14 @@
 <template>
   <main class="fixed inset-0 overflow-hidden bg-black text-white">
-    <canvas id="maple-canvas" class="block h-full w-full outline-none"></canvas>
+    <canvas id="maple-canvas" class="block h-full w-full outline-none" />
+
+    <button
+      type="button"
+      class="absolute right-4 top-4 z-20 flex h-10 items-center gap-2 rounded-full border border-white/40 bg-black/70 px-4 text-sm text-white/90 backdrop-blur transition hover:bg-white hover:text-black"
+      @click="router.push('/')"
+    >
+      ← 退出主页
+    </button>
 
     <div
       v-if="!started"

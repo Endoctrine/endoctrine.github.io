@@ -21,6 +21,9 @@ export default defineConfig({
       viewport: "width=device-width, initial-scale=1.0",
     },
   },
+  server: {
+    historyApiFallback: true,
+  },
   output: {
     target: "web",
     cleanDistPath: true,
