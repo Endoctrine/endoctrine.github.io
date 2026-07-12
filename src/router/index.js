@@ -8,6 +8,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const Home = () => import('../pages/Home.vue');
 const About = () => import('../pages/About.vue');
 const Codenames = () => import('../pages/Codenames/Codenames.vue');
+const Maple = () => import('../pages/Maple.vue');
 
 // 路由配置
 const routes = [
@@ -28,6 +29,12 @@ const routes = [
     name: 'codenames',
     component: Codenames,
     meta: { title: '截码战' }
+  },
+  {
+    path: '/maple',
+    name: 'maple',
+    component: Maple,
+    meta: { title: 'Maple Demo' }
   },
   // 404 路由
   {

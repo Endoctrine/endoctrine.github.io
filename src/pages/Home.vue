@@ -66,6 +66,19 @@
             </svg>
           </div>
         </div>
+
+        <!-- 列表项 - Maple Demo -->
+        <div
+          class="group border-b border-black/20 dark:border-white/20 pb-4 cursor-pointer transition-all duration-300"
+          @click="goToMaple"
+        >
+          <div class="flex items-center justify-between group-hover:font-bold transition-all duration-300">
+            <span class="text-xl font-light">Maple Demo</span>
+            <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -96,6 +109,11 @@ const goToAbout = () => {
 // 跳转到截码战
 const goToCodenames = () => {
   router.push('/codenames');
+};
+
+// 跳转到 Maple Demo
+const goToMaple = () => {
+  router.push('/maple');
 };
 </script>
 
